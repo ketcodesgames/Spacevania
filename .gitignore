@@ -20,3 +20,9 @@ UserSettings/
 *.mdb
 *.opendb
 *.VC.db
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+*.code-workspace
+*.vsconfig

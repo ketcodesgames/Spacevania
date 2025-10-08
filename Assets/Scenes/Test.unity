@@ -2473,12 +2473,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 8
   jumpForce: 20
+  dashSpeed: 25
+  dashDuration: 0.5
+  afterImageLifetime: 0.5
+  afterImageSpawnInterval: 0.033333335
+  dashCooldown: 0.25
   groundCheck: {fileID: 1612513954}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
   shot: {fileID: 1547442482193745271, guid: 9f74061dc66b8424d97bdaab8421c74b, type: 3}
   shotPoint: {fileID: 587599167}
+  playerSpriteRenderer: {fileID: 1309264508}
+  afterImageSpriteRenderer: {fileID: 2052259110856340855, guid: a6dda0dc76341524ebfc8954b071ea19, type: 3}
+  afterImageColor: {r: 0.20080292, g: 0.22167355, b: 0.44654083, a: 0.68235296}
 --- !u!114 &1676399735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2597,7 +2605,7 @@ Transform:
   m_GameObject: {fileID: 1804779066}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.95, y: 0.76, z: -10}
+  m_LocalPosition: {x: -2.9500003, y: 0.7600001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
