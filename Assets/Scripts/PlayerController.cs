@@ -10,13 +10,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float afterImageLifetime = 0.1f;
     [SerializeField] float afterImageSpawnInterval = 0.05f;
     [SerializeField] float dashCooldown = 1f;
+    [SerializeField] float switchSpriteDuration = 0.5f;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] BulletController shot;
     [SerializeField] Transform shotPoint;
     [SerializeField] SpriteRenderer playerSpriteRenderer;
+    [SerializeField] SpriteRenderer ballSpriteRenderer;
     [SerializeField] SpriteRenderer afterImageSpriteRenderer;
     [SerializeField] Color afterImageColor;
+    [SerializeField] GameObject standingSprite;
+    [SerializeField] GameObject ballSprite;
 
     Rigidbody2D playerRigidBody;
     Animator playerAnimator;
@@ -26,6 +30,7 @@ public class PlayerController : MonoBehaviour
     float dashCounter = 0f;
     float afterImageCounter = 0f;
     float dashRechargeCounter = 0f;
+    float switchSpriteCounter = 0f;
 
     void Start()
     {
@@ -39,6 +44,7 @@ public class PlayerController : MonoBehaviour
         DashCooldown();
         Run();
         IsGrounded();
+        SwitchSprites();
         FlipSprite();
     }
 
@@ -81,6 +87,32 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetBool("IsRunning", hasHorizontalSpeed);
     }
 
+    void SwitchSprites()
+    {
+        if (moveInput.y < 0)
+        {
+            switchSpriteCounter -= Time.deltaTime;
+            if (switchSpriteCounter < 0)
+            {
+                standingSprite.SetActive(false);
+                ballSprite.SetActive(true);
+            }
+        }
+        else if (moveInput.y > 0)
+        {
+            switchSpriteCounter -= Time.deltaTime;
+            if (switchSpriteCounter < 0)
+            {
+                standingSprite.SetActive(true);
+                ballSprite.SetActive(false);
+            }
+        }
+        else
+        {
+            switchSpriteCounter = switchSpriteDuration;
+        }
+    }
+
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
@@ -107,8 +139,11 @@ public class PlayerController : MonoBehaviour
 
     void OnAttack()
     {
-        Instantiate(shot, shotPoint.position, shotPoint.rotation).SetMoveDirection(transform.localScale.x, 0f);
-        playerAnimator.SetTrigger("IsShooting");
+        if (standingSprite.activeSelf)
+        {
+            Instantiate(shot, shotPoint.position, shotPoint.rotation).SetMoveDirection(transform.localScale.x, 0f);
+            playerAnimator.SetTrigger("IsShooting");
+        }
     }
 
     void OnDash(InputValue value)
@@ -138,8 +173,12 @@ public class PlayerController : MonoBehaviour
 
     void ShowAfterImage()
     {
-        SpriteRenderer afterImage = Instantiate(afterImageSpriteRenderer, transform.position, transform.rotation);
-        afterImage.sprite = playerSpriteRenderer.sprite;
+        bool isPlayerStanding = standingSprite.activeSelf;
+        Vector3 position = isPlayerStanding ? transform.position : ballSprite.transform.position;
+        Sprite sprite = isPlayerStanding ? playerSpriteRenderer.sprite : ballSpriteRenderer.sprite;
+
+        SpriteRenderer afterImage = Instantiate(afterImageSpriteRenderer, position, transform.rotation);
+        afterImage.sprite = sprite;
         afterImage.transform.localScale = transform.localScale;
         afterImage.color = afterImageColor;
 
