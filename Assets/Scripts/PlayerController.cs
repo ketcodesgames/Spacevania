@@ -21,9 +21,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Color afterImageColor;
     [SerializeField] GameObject standingSprite;
     [SerializeField] GameObject ballSprite;
+    [SerializeField] Animator playerAnimator;
+    [SerializeField] Animator ballAnimator;
 
     Rigidbody2D playerRigidBody;
-    Animator playerAnimator;
     Vector2 moveInput;
     bool isGrounded;
     bool canDoubleJump;
@@ -35,7 +36,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
-        playerAnimator = FindFirstObjectByType<Animator>();
     }
 
     void Update()
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
         {
             dashRechargeCounter -= Time.deltaTime;
         }
-    }   
+    }
 
     void Run()
     {
@@ -84,7 +84,15 @@ public class PlayerController : MonoBehaviour
         playerRigidBody.linearVelocity = moveVector;
 
         bool hasHorizontalSpeed = Mathf.Abs(playerRigidBody.linearVelocity.x) > Mathf.Epsilon;
-        playerAnimator.SetBool("IsRunning", hasHorizontalSpeed);
+
+        if (standingSprite.activeSelf)
+        {
+            playerAnimator.SetBool("IsRunning", hasHorizontalSpeed);
+        }
+        else
+        {
+            ballAnimator.SetBool("IsRolling", hasHorizontalSpeed);   
+        }
     }
 
     void SwitchSprites()
