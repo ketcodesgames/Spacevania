@@ -26,3 +26,7 @@ UserSettings/
 .vscode/
 *.code-workspace
 *.vsconfig
+
+# Ignore Unity recovery scenes
+Assets/_Recovery/
+Assets/_Recovery.meta

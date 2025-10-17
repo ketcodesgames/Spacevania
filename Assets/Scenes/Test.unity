@@ -1900,7 +1900,7 @@ Transform:
   m_GameObject: {fileID: 336939805}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9500003, y: 0.7600001, z: -10}
+  m_LocalPosition: {x: -2.9500003, y: -1.5199999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2423,7 +2423,7 @@ Transform:
   m_GameObject: {fileID: 1676399730}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.95, y: 0.76, z: 0}
+  m_LocalPosition: {x: -2.95, y: -1.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2431,6 +2431,7 @@ Transform:
   - {fileID: 1831919038}
   - {fileID: 1612513954}
   - {fileID: 587599167}
+  - {fileID: 2136613183}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1676399733
@@ -2456,7 +2457,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -2494,6 +2495,8 @@ MonoBehaviour:
   ballSprite: {fileID: 1831919037}
   playerAnimator: {fileID: 1309264509}
   ballAnimator: {fileID: 1831919041}
+  bombSpawnPoint: {fileID: 2136613183}
+  bombPrefab: {fileID: 144653398985884138, guid: 7bc8548317f08ab4dbfdfb1d3e720d8b, type: 3}
 --- !u!114 &1676399735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2612,7 +2615,7 @@ Transform:
   m_GameObject: {fileID: 1804779066}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9500003, y: 0.7600001, z: -10}
+  m_LocalPosition: {x: -2.96054, y: 0.31903994, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2844,6 +2847,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &2136613182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2136613183}
+  m_Layer: 6
+  m_Name: BombPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2136613183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136613182}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1676399732}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

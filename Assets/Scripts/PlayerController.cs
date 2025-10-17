@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject ballSprite;
     [SerializeField] Animator playerAnimator;
     [SerializeField] Animator ballAnimator;
+    [SerializeField] Transform bombSpawnPoint;
+    [SerializeField] GameObject bombPrefab;
 
     Rigidbody2D playerRigidBody;
     Vector2 moveInput;
@@ -151,6 +153,10 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(shot, shotPoint.position, shotPoint.rotation).SetMoveDirection(transform.localScale.x, 0f);
             playerAnimator.SetTrigger("IsShooting");
+        }
+        else if (ballSprite.activeSelf)
+        {
+            Instantiate(bombPrefab, bombSpawnPoint.position, bombSpawnPoint.rotation);
         }
     }
 
