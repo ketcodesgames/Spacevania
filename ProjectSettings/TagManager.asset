@@ -15,8 +15,8 @@ TagManager:
   - Ground
   - Background
   - Shot
-  - 
-  - 
+  - Desctructible
+  - Interactables
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3988666595
+    locked: 0
+  - name: Interactables
+    uniqueID: 196385419
     locked: 0
   m_RenderingLayers:
   - Default

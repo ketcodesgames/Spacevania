@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator ballAnimator;
     [SerializeField] Transform bombSpawnPoint;
     [SerializeField] GameObject bombPrefab;
+    [SerializeField] AbilitySO doubleJumpAbility;
+    [SerializeField] AbilitySO dashAbility;
+    [SerializeField] AbilitySO becomeBallAbility;
+    [SerializeField] AbilitySO dropBombAbility;
 
     Rigidbody2D playerRigidBody;
     Vector2 moveInput;
@@ -99,6 +103,11 @@ public class PlayerController : MonoBehaviour
 
     void SwitchSprites()
     {
+        if (!becomeBallAbility.IsEnabled)
+        {
+            return;
+        }
+
         if (moveInput.y < 0)
         {
             switchSpriteCounter -= Time.deltaTime;
@@ -135,7 +144,7 @@ public class PlayerController : MonoBehaviour
         {
             if (isGrounded)
             {
-                canDoubleJump = true;
+                canDoubleJump = true && doubleJumpAbility.IsEnabled;
             }
             else
             {
@@ -154,7 +163,7 @@ public class PlayerController : MonoBehaviour
             Instantiate(shot, shotPoint.position, shotPoint.rotation).SetMoveDirection(transform.localScale.x, 0f);
             playerAnimator.SetTrigger("IsShooting");
         }
-        else if (ballSprite.activeSelf)
+        else if (ballSprite.activeSelf && dropBombAbility.IsEnabled)
         {
             Instantiate(bombPrefab, bombSpawnPoint.position, bombSpawnPoint.rotation);
         }
@@ -162,7 +171,8 @@ public class PlayerController : MonoBehaviour
 
     void OnDash(InputValue value)
     {
-        if (value.isPressed && dashCounter <= 0f && dashRechargeCounter <= 0f)
+        if (value.isPressed && dashAbility.IsEnabled
+            && dashCounter <= 0f && dashRechargeCounter <= 0f)
         {
             dashCounter = dashDuration;
             ShowAfterImage();
