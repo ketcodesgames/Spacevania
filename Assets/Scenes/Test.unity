@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 44556302}
   - component: {fileID: 44556303}
   - component: {fileID: 44556304}
+  - component: {fileID: 44556306}
   - component: {fileID: 44556305}
   m_Layer: 0
   m_Name: Crab
@@ -255,6 +256,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.089218974}
   m_Radius: 0.8559617
+--- !u!114 &44556306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44556298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea81f92202c92242a918d6984f2281b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamagePlayer
+  damageAmount: 1
 --- !u!1 &68928757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2778,8 +2792,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '[ABILITY] UNLOCKED'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 49c40b0f0881326499c693615b8de5b2, type: 2}
-  m_sharedMaterial: {fileID: -8396335498049238556, guid: 49c40b0f0881326499c693615b8de5b2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2803,7 +2817,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.1
+  m_fontSize: 37.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3232,6 +3246,7 @@ GameObject:
   - component: {fileID: 1676399732}
   - component: {fileID: 1676399733}
   - component: {fileID: 1676399734}
+  - component: {fileID: 1676399736}
   - component: {fileID: 1676399735}
   m_Layer: 6
   m_Name: Player
@@ -3357,6 +3372,19 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1676399736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676399730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e97bc772cf5f1714a9e6720f6717d87f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealthController
+  maxHealth: 10
 --- !u!1 &1804779066
 GameObject:
   m_ObjectHideFlags: 0

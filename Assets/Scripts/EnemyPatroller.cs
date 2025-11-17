@@ -15,7 +15,6 @@ public class EnemyPatroller : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();   
-        animator.GetComponent<Animator>();
         waitCounter = waitTimeAtPoint;
 
         foreach (Transform point in patrolPoints)
